@@ -1,0 +1,136 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css" />
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+</head>
+<body class="">
+    <div class="navbar navbar-inverse navbar-fixed-top" id="navigation">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Toronno Post", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Properties", "Properties", "Home")</li>
+                    <li>@Html.ActionLink("New Property", "InsertDetails", "Reg")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div id="main-title-content" class="mb3">
+        <img src="/Content/p1.jpg" id="bg" alt="main-title"class="absolute" >
+        <div class="container">
+            <div class="">
+                <h1>@ViewBag.Heading</h1>
+                <p>@ViewBag.Subheading</p>
+            </div>
+        </div>
+    </div>
+    <div class="container body-content mb5" id="content">
+        @RenderBody()
+    </div>
+
+    <div id="footer-wrapper">   
+        <div id="footer-top">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-3">
+                        <div class="">
+                            <h4><i class="fa fa-address-book" aria-hidden="true"></i> Contact</h4>
+                            <p>If you have any request, feel free to connect to Coding mafia team.</p>
+                            <ul class="unstyled contact">
+                                <li><i class="fa fa-home"></i> 941 Progress Ave, Toronto, ON</li>
+                                <li><i class="fa fa-phone"></i> +647-777-888</li>
+                                <li><i class="fa fa-envelope"></i> someone@group4.com</li>
+                            </ul>
+
+
+                            <a href="#" class="btn-proper btn"><i class="fa fa-facebook"></i></a>
+                            <a href="#" class="btn-proper btn"><i class="fa fa-twitter"></i></a>
+                            <a href="#" class="btn-proper btn"><i class="fa fa-google-plus"></i></a>
+                            <a href="#" class="btn-proper btn"><i class="fa fa-pinterest"></i></a>
+
+
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="">
+                            <h4><i class="fa fa-link"> </i> Pages Link</h4>
+                            <ul class="unstyled list-link">
+                                <li><a href="#">Condimentum - Condimentum gravida</a></li>
+                                <li><a href="#">Etiam at - Condimentum gravida</a></li>
+                                <li><a href="#">Fusce vel - Condimentum gravida</a></li>
+                                <li><a href="#">Vivamus - Condimentum gravida</a></li>
+                                <li><a href="#">Pellentesque - Condimentum gravida</a></li>
+                                <li><a href="#">Fusce vel - Condimentum gravida</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="footer-subscribe">
+                            <h4><i class="fa fa-envelope"></i> Subscribe</h4>
+
+                            <form>
+                                <label>Full Name</label>
+                                <p><input type="text" name="" value="" placeholder="Enter Your Full Name" required=""></p>
+                                <label>Email</label>
+                                <p><input type="email" name="" value="" placeholder="Enter Your Email" required=""></p>
+                                <div>
+                                    <button class="btn-proper btn">Send</button>
+                                </div>
+
+
+
+                            </form>
+                        </div>
+                    </div>
+                    <div class="col-md-3">
+                        <div class="">
+                            <h4><i class="fa fa-newspaper-o"></i> Recent News</h4>
+                            <ul class="unstyled list-link">
+                                <li><a href="#">Sed eu leo orci, condimentum gravida metus</a></li>
+                                <li><a href="#">Etiam at nulla ipsum, in rhoncus purus</a></li>
+                                <li><a href="#">Fusce vel magna faucibus felis dapibus facilisis</a></li>
+                                <li><a href="#">Vivamus scelerisque dui in massa</a></li>
+                                <li><a href="#">Pellentesque eget adipiscing dui semper</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="back-to-top" class="text-center"><a href="#"><i class="icon-angle-up"></i></a></div>
+        </div>
+        <div id="footer-twit" class="text-center">
+            <div class="container">
+                <div class="pt3 pb1">
+                    <p><i class="fa fa-twitter fa-3" aria-hidden="true"></i> <i class="icon-quote-left qoute"></i> toronnopost is the best Real Estate website ever! <i class="icon-quote-right qoute"></i></p>
+                </div>
+            </div>
+        </div>
+        <div id="footer" class="text-center">
+            <div class="pt3 pb1">
+                <p>Copyright © <a href="#">Coding Mafia</a> - @Html.ActionLink("Home", "Index", "Home") | @Html.ActionLink("About", "About", "Home") | @Html.ActionLink("Contact", "Contact", "Home") </p>
+            </div>
+        </div>
+    </div>
+
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

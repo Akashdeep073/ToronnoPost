@@ -1,0 +1,124 @@
+﻿@{
+    ViewBag.Title = "PropertyDetails";
+}
+
+<div class="row">
+    <div class="col-md-9">
+       
+        <div id="pTitle"></div>
+
+        <div id="Images">
+        </div>
+
+        <div id="PropDetail"></div>
+
+     </div>
+    <div class="col-md-3">
+        <h2>
+            <i class="fa fa-map-marker" aria-hidden="true"></i>
+            Location
+        </h2>
+        <hr />
+        <iframe id="map-location" width="100%" height="250" frameborder="0" scrolling="no" marginheight="0" marginwidth="0"></iframe>
+
+    </div>
+</div>
+
+
+
+<script type="text/javascript">
+
+
+    $(window).load(function () {
+
+        function displayData(data) {
+            var html = '';
+            $.each(data, function (i, val) {
+                html += '<h2><i class="fa fa-home" aria-hidden="true"></i>' +
+                        val.title + '</h2><hr>'
+                $(html).appendTo('#pTitle');
+
+                html = '<h3>Property Description</h3>' +
+                        '<p>For ' + val.ad_type + ' (Price $'+val.price+') - '+val.location + '</p>' +
+                        '<p>'+val.description+'</p>' +
+                        '<h3>Property Feature</h3>' +
+                        val.Features +
+                        '<h3>Addtional Features</h3>' +
+                        '<p>Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit. Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit. Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit. Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elitipsum dolor sit amet, consectetur fermentum adipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elitadipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elitadipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elitadipiscing elit, ipsum dolor sit amet, consectetur fermentum adipiscing elit.</p>';
+                debugger;
+                var q = encodeURIComponent(val.address);
+                $('#map-location')
+                 .attr('src',
+                      'https://maps.google.com/maps?&q=' + q + '&output=embed'
+                      );
+
+            });
+            $(html).appendTo('#PropDetail');
+        }
+
+
+        function displayImages(data) {
+            var html = '<script src="/Scripts/fotorama.js"><\/script><div class="fotorama" data-nav="thumbs">';
+            $.each(data, function (i, val) {
+                
+                html += '<img src="/Images/' + val.ImageFileName + '">'
+            });
+            html += '</div>';
+            $(html).appendTo('#Images');
+        }
+
+
+        var accesstoken = sessionStorage.getItem('accessToken');
+        var authHeaders = {};
+        if (accesstoken) {
+            authHeaders.Authorization = 'Bearer ' + accesstoken;
+        }
+
+        
+        var parameters = {};
+
+        parameters['[' + 0 + '].Key'] = "Id";
+        parameters['[' + 0 + '].Value'] = getUrlParameter('id');
+        
+
+        
+        $.ajax({
+            method: 'GET',
+            url: '/api/GetPropDetail/',
+            data: parameters,
+            headers: authHeaders,
+            success: function (data) {
+                    displayData(data);
+                },
+            error: function (error) {
+                $('#msgError').html(error.responseJSON.Message);
+                $('#divErrors').show();
+                    return false;
+                }
+        });
+
+        $.ajax({
+            method: 'GET',
+            url: '/api/GetPropImages/',
+            data: parameters,
+            headers: authHeaders,
+            success: function (data) {
+                displayImages(data);
+            },
+            error: function (error) {
+                $('#msgError').html(error.responseJSON.Message);
+                $('#divErrors').show();
+                return false;
+            }
+        });
+    });
+
+
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        return results === null ? '' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+
+</script>

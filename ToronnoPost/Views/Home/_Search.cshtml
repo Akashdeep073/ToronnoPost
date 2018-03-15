@@ -1,0 +1,112 @@
+﻿
+<div class="col-md-3">
+    <h2>
+        <i class="fa fa-search" aria-hidden="true"></i>
+        Search
+    </h2>
+    <hr />
+    <form class="bottom-line line-before" action="?" method="get">
+        <div class="form-group">
+            <label>Location</label>
+            <input id="Location" type="text" placeholder="Type Your Location" name="" value="" class="input-block-level form-control">
+        </div>
+        <div class="control-group-form">
+            <div class="control-group half pull-left">
+                <label class="control-label">Min Price</label>
+                <div class="controls">
+                    <select name="" id="MinP" class="input-block-level form-control">
+                        <option value="">All</option>
+                        <option value="1000">1000</option>
+                        <option value="2000">2000</option>
+                        <option value="3000">3000</option>
+                        <option value="4000">4000</option>
+                        <option value="5000">5000+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group half text-right pull-right">
+                <label class="control-label">Max Price</label>
+                <div class="controls">
+                    <select name="" id="MaxP" class="input-block-level form-control">
+                        <option value="">All</option>
+                        <option value="10000">10000</option>
+                        <option value="20000">20000</option>
+                        <option value="30000">30000</option>
+                        <option value="40000">40000</option>
+                        <option value="99999">50000+</option>
+                    </select>
+                </div>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+        <div class="control-group-form">
+            <div class="control-group half pull-left">
+                <label class="checkbox">
+                    <input type="checkbox" id="Rent"> Rent Property
+                </label>
+            </div>
+            <div class="control-group half text-right pull-right">
+                <label class="checkbox">
+                    <input type="checkbox" id="Sell"> Sell Property
+                </label>
+            </div>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="form-group">
+            <label>Bath</label>
+            <select name="" id="Bath" class="input-block-level form-control" required="">
+                <option value="">All</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="">5+</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label>Beds</label>
+            <select name="" id="Bed" class="input-block-level form-control" required="">
+                <option value="">All</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="">5+</option>
+            </select>
+        </div>
+
+        <button type="button" class="input-block-level btn-proper btn btn-large button1"> Search</button>
+
+    </form>
+</div>
+
+<script type="text/javascript">
+
+    $('.button1').click(function () {
+        var par = '';
+
+        var location = $.trim($('#Location').val()).toUpperCase();
+        if (location.length > 0) { par += "&Location=" + location; }
+
+        var minP = $.trim($('#MinP').val());
+        if (minP.length > 0) { par += "&MinP=" + minP; }
+
+        var maxP = $.trim($('#MaxP').val());
+        if (maxP.length > 0) { par += "&MaxP=" + maxP; }
+
+        if ( ($("#Rent").is(':checked')) &&  !($("#Sell").is(':checked')) ) { par += "&AdType=Rent" }
+        if ( !($("#Rent").is(':checked')) &&  ($("#Sell").is(':checked')) ) { par += "&AdType=Sale" }
+        debugger;
+        var bed = $.trim($('#Bed').val());
+        if (bed.length > 0) { par += "&Bed=" + bed; }
+
+        var bath = $.trim($('#Bath').val());
+        if (bath.length > 0) { par += "&Bath=" + bath; }
+
+        debugger;
+        window.location = "/Home/Properties/?" + par;
+    });
+</script>
+
+

@@ -1,0 +1,119 @@
+﻿
+@{
+    ViewBag.Title = "Properties";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <h2>
+            <i class="fa fa-home" aria-hidden="true"></i>
+            Properties
+        </h2>
+        <hr />
+
+        <div class="list-properties right-space">
+            <div id="AllProp"></div>
+        </div>
+
+        <nav aria-label="Page navigation"><ul class="pagination pagination-lg"> <li> <a href="#" aria-label="Previous"> <span aria-hidden="true">«</span> </a> </li> <li><a href="#">1</a></li> <li><a href="#">2</a></li> <li><a href="#">3</a></li> <li><a href="#">4</a></li> <li><a href="#">5</a></li> <li> <a href="#" aria-label="Next"> <span aria-hidden="true">»</span> </a> </li> </ul> </nav>
+    </div>
+    @Html.Partial("_Search")
+</div>
+
+
+<script type="text/javascript">
+    $(window).load(function () {
+
+        function displayData(data) {
+
+
+            var html = '';
+
+            $.each(data, function (i, val) {
+                html += '<div class="property "><div class="row"><div class="col-md-6"><div class="property-images">' +
+                        '<a href="/Home/PropertyDetails/?id=' + val.adid + '"><div class="mask">' +
+                        '<div class="desc-type for-sale">'+val.ad_type+'</div>' +
+                        '<div class="price">$ '+val.price+'</div>' +
+                        '</div><img src="/Images/' + val.ImageFileName + '" alt="property">' +
+                        '</a></div></div><div class="col-md-6"><div class="property-details">' +
+                        '<h3><a href="#">'+val.title+'</a></h3>' +
+                        '<p>'+val.description+'</p>' +
+                        '<p>' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Bath : '+val.bath+'</span> ' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Beds : ' + val.bed + '</span> ' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Pool : ' + val.pool + '</span> ' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Kicthen : ' + val.kicthen + '</span> ' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Office : ' + val.office + '</span> ' +
+                        '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1"></i> Music Room : ' + val.musicroom + '</span> ' +
+                        '</p><div class="agent-preview">' +
+                        '<div class="agent-image pull-left"><a href="#"><img src="/Images/ReMax.png"  alt="property"></a></div>' +
+                        '<div class="agent-contant pull-right">' +
+                        '<ul class="unstyled pl0">' +
+                        '<li><i class="fa fa-phone"></i> (+89)98732.984 </li>' +
+                        '<li><i class="fa fa-envelope"></i> agent@company.com</li>' +
+                        '<li><i class="fa fa-facebook"></i> angel</li>' +
+                        '<li><i class="fa fa-twitter"></i> angel</li>' +
+                        '</ul></div></div></div></div></div></div>';
+            });
+
+
+            $(html).appendTo('#AllProp');
+        }
+
+        var accesstoken = sessionStorage.getItem('accessToken');
+        var authHeaders = {};
+        if (accesstoken) {
+            authHeaders.Authorization = 'Bearer ' + accesstoken;
+        }
+
+        var parameters = {};
+
+        parameters['[' + 0 + '].Key'] = "Location";
+        parameters['[' + 0 + '].Value'] = getUrlParameter('Location');
+
+        parameters['[' + 1 + '].Key'] = "MinP";
+        parameters['[' + 1 + '].Value'] = getUrlParameter('MinP');
+
+        parameters['[' + 2 + '].Key'] = "MaxP";
+        parameters['[' + 2 + '].Value'] = getUrlParameter('MaxP');
+
+        parameters['[' + 3 + '].Key'] = "AdType";
+        parameters['[' + 3 + '].Value'] = getUrlParameter('AdType');
+
+        parameters['[' + 4 + '].Key'] = "Bed";
+        parameters['[' + 4 + '].Value'] = getUrlParameter('Bed');
+
+        parameters['[' + 5 + '].Key'] = "Bath";
+        parameters['[' + 5 + '].Value'] = getUrlParameter('Bath');
+
+        debugger;
+
+        $.ajax({
+            method: 'GET',
+            url: '@Url.Content("~/api/GetAllP")',
+            data: parameters,
+            headers: authHeaders,
+            success: function (data) {
+                displayData(data);
+            },
+            error: function (error) {
+                $('#msgError').html(error.responseJSON.Message);
+                $('#divErrors').show();
+                return false;
+            }
+        });
+    });
+
+
+    function getUrlParameter(name) {
+        name = name.replace(/[\[]/, '\\[').replace(/[\]]/, '\\]');
+        var regex = new RegExp('[\\?&]' + name + '=([^&#]*)');
+        var results = regex.exec(location.search);
+        if (name == 'MinP') return results === null ? '0' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+        if (name == 'MaxP') return results === null ? '9999999' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+
+
+        return results === null ? '%' : decodeURIComponent(results[1].replace(/\+/g, ' '));
+    };
+
+</script>

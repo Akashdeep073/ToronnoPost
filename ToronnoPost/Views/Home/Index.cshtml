@@ -1,0 +1,174 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+<div class="row">
+    <div class="col-md-9">
+        <h2>
+            <i class="fa fa-home" aria-hidden="true"></i>
+            Properties
+        </h2>
+        <hr />
+
+        <div class="grid-item grid-style-properties gridalicious">
+
+
+
+            <div id="latestProp">
+            </div>
+
+
+            <div id="clearP4agg" style="clear: both; height: 0px; width: 0px; display: block;"></div>
+        </div>
+
+    </div>
+
+    @Html.Partial("_Search")
+
+</div>
+<hr />
+<div class="row">
+    <div class="col-md-9">
+        <h2>
+            <i class="fa fa-newspaper-o" aria-hidden="true"></i>
+            News
+        </h2>
+        <hr />
+        <div class=" news right-space">
+            <div class="media box-white">
+                <a class="pull-left" href="#">
+                    <img alt="images" class="media-object" src="https://loremflickr.com/198/148/news">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Investor Club</h4>
+                    <p>
+                        Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit.
+                        Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit.
+                    </p>
+                    <a href="#" class="btn-proper btn btn-small ">Read More</a>
+                </div>
+            </div>
+            <div class="media box-white">
+                <a class="pull-left" href="#">
+                    <img alt="images" class="media-object" src="https://loremflickr.com/198/148/people">
+                </a>
+                <div class="media-body">
+                    <h4 class="media-heading">Investor Club</h4>
+                    <p>
+                        Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit.
+                        Vivamus diam diam, fermentum sed dapibus eget, egestas sed eros. Lorem fermentum ipsum dolor sit amet, ipsum dolor sit amet, consectetur fermentum adipiscing elit.
+                    </p>
+                    <a href="#" class="btn-proper btn btn-small ">Read More</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-3">
+        <h2>
+            <i class="fa fa-user-secret" aria-hidden="true"></i>
+            Agents
+        </h2>
+        <hr />
+        <div class="list-items">
+
+            <div class="item">
+                <div class="img-preview">
+                    <img src="https://loremflickr.com/100/80/face1" alt="Corin Langpost">
+                </div>
+                <div class="item-desk">
+                    <div class="title">
+                        <h3><a href="#">Angelina Cos</a></h3>
+                    </div>
+                    <div class="location">Palo Alto CA</div>
+                    <a href="#" class="btn-proper btn-mini btn">Profile Page</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="item">
+                <div class="img-preview">
+                    <img src="https://loremflickr.com/100/80/face" alt="Corin Langpost">
+                </div>
+                <div class="item-desk">
+                    <div class="title">
+                        <h3><a href="#">Angelina Cos</a></h3>
+                    </div>
+                    <div class="location">Palo Alto CA</div>
+                    <a href="#" class="btn-proper btn-mini btn">Profile Page</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="item">
+                <div class="img-preview">
+                    <img src="https://loremflickr.com/100/80/face2" alt="Corin Langpost">
+                </div>
+                <div class="item-desk">
+                    <div class="title">
+                        <h3><a href="#">Angelina Cos</a></h3>
+                    </div>
+                    <div class="location">Palo Alto CA</div>
+                    <a href="#" class="btn-proper btn-mini btn">Profile Page</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<script type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+<script type="text/javascript">
+    $(window).load(function () {
+
+        function displayData(data) {
+
+
+            var html = '';
+
+            $.each(data, function (i, val) {
+                html += '<div class="galcolumn"><div class="item"><a href="/Home/PropertyDetails/?id=' + val.adid + '" class="with-hover">' +
+                    '<div class="for_rent_banner absolute pa2 bg-black-70 white">For '+val.ad_type+'</div>' +
+                    '<img alt="images" src="/Images/'+val.ImageFileName+'" class="full" ' +
+                    'style="width: 100%; height: auto; display: block; margin-left: auto; margin-right: auto;">' +
+                    '<span class="mask_hover"></span></a>' +
+                    '<h4 class=" ">' + val.title + '</h4><div class="preview-properties "><div class="box-detail">' +
+                    '<p class="text-center short-detail">' +
+                            '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1" aria-hidden="true"></i> Bath : '+val.bath+'</span> ' +
+                            '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1" aria-hidden="true"></i> Beds : '+val.bed+'</span> ' +
+                            '<span class="label label-default"><i class="fa fa-arrow-circle-right fa-1" aria-hidden="true"></i> Pool : '+val.pool+'</span> ' +
+                            '<span class="price">$'+val.price+'</span></p><div class="clearfix">' +
+                            '<a href="/Home/PropertyDetails/?id='+val.adid+'" class="btn-proper btn btn-small pull-left">See Detail</a>' +
+                            '<a href="#" class="btn-proper btn btn-small pull-right">Compare</a>' +
+                    '</div></div></div></div></div>';
+
+
+            });
+
+
+            $(html).appendTo('#latestProp');
+        }
+
+        var accesstoken = sessionStorage.getItem('accessToken');
+        var authHeaders = {};
+        if (accesstoken) {
+            authHeaders.Authorization = 'Bearer ' + accesstoken;
+        }
+
+
+        $.ajax({
+            method: 'GET',
+            url: '@Url.Content("~/api/GetLatestP")',
+            headers: authHeaders,
+            success: function (data) {
+                displayData(data);
+            },
+            error: function (error) {
+                $('#msgError').html(error.responseJSON.Message);
+                $('#divErrors').show();
+                return false;
+            }
+        });
+    });
+
+
+</script>
