@@ -9,6 +9,8 @@
     @Scripts.Render("~/bundles/jquery")
     <link rel="stylesheet" href="https://unpkg.com/tachyons@4.9.0/css/tachyons.min.css" />
     <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet" integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+    <script src='https://www.google.com/recaptcha/api.js'></script>
+
 </head>
 <body class="">
     <div class="navbar navbar-inverse navbar-fixed-top" id="navigation">
@@ -24,8 +26,7 @@
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
                     <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("Properties", "Properties", "Home")</li>
-                    <li>@Html.ActionLink("New Property", "InsertDetails", "Reg")</li>
+                    <li>@Html.ActionLink("Properties", "Properties", "Home")</li>                    
                     <li>@Html.ActionLink("About", "About", "Home")</li>
                     <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
                 </ul>
@@ -53,7 +54,7 @@
                     <div class="col-md-3">
                         <div class="">
                             <h4><i class="fa fa-address-book" aria-hidden="true"></i> Contact</h4>
-                            <p>If you have any request, feel free to connect to Coding mafia team.</p>
+                            <p>If you have any request, feel free to connect to Group 4.</p>
                             <ul class="unstyled contact">
                                 <li><i class="fa fa-home"></i> 941 Progress Ave, Toronto, ON</li>
                                 <li><i class="fa fa-phone"></i> +647-777-888</li>

@@ -1,0 +1,76 @@
+﻿@model List<WebShop.Models.AspNetUser>
+
+@{
+
+    ViewBag.Title = "Index";
+
+}
+
+
+
+<h2>Employee List</h2>
+
+
+
+@using (Html.BeginForm("Index", "UserTable", FormMethod.Post))
+
+{
+
+    <table class="table">
+
+        @for (int i = 0; i < Model.Count; i++)
+
+        {
+
+            <tr>
+
+                <td>
+
+                    @Html.TextBox("employees[" + @i + "].ID",
+                         Model[i].Id, new { @readonly = "readonly" })
+
+                </td>
+
+                <td>
+
+                    @Html.TextBox("employees[" + @i + "].Email",
+
+                         Model[i].Email, new { @readonly = "readonly" })
+
+                </td>
+
+                <td>
+
+                    @Html.TextBox("employees[" + @i + "].PhoneNumber",
+
+                         Model[i].PhoneNumber, new { @readonly = "readonly" })
+
+                </td>
+
+                <td>
+
+                    @Html.TextBox("employees[" + @i + "].UserName",
+
+                         Model[i].UserName, new { @readonly = "readonly" })
+
+                </td>
+
+            </tr>
+
+        }
+
+
+
+        <tr>
+
+            <td colspan="4">
+
+                <input type="submit" value="Submit" />
+
+            </td>
+
+        </tr>
+
+    </table>
+
+}

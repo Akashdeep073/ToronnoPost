@@ -10,7 +10,7 @@ namespace toronnopost.Controllers
     {
         public ActionResult Index()
         {
-            ViewBag.Heading = "Welcome to toronnopost";
+            ViewBag.Heading = "Welcome to Toronno Post";
             ViewBag.Subheading = "The Best Real Estate Website in Toronto";
             return View();
         }

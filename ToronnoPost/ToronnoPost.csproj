@@ -25,6 +25,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <Use64BitIISExpress />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -80,6 +81,8 @@
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
@@ -210,14 +213,34 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegController.cs" />
+    <Compile Include="Controllers\UserDataController.cs" />
+    <Compile Include="Controllers\UserTableController.cs" />
     <Compile Include="DAL\SQL.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AspNetUser.cs">
+      <DependentUpon>usertable.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\RegisterProperty.cs" />
+    <Compile Include="Models\usertable.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usertable.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usertable.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usertable.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\usertable.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>usertable.edmx</DependentUpon>
+    </Compile>
     <Compile Include="Objects\Users.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -280,10 +303,27 @@
     <Content Include="Images\Ad3_8.jpg" />
     <Content Include="Images\Ad3_9.jpg" />
     <Content Include="Images\ReMax.png" />
+    <Content Include="Models\usertable.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>usertable.edmx</DependentUpon>
+      <LastGenOutput>usertable.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\usertable.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>usertable.edmx</DependentUpon>
+      <LastGenOutput>usertable.cs</LastGenOutput>
+    </Content>
     <Content Include="Scripts\ai.0.22.19-build00125.js" />
     <Content Include="Scripts\ai.0.22.19-build00125.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <EntityDeploy Include="Models\usertable.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>usertable.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\usertable.edmx.diagram">
+      <DependentUpon>usertable.edmx</DependentUpon>
+    </Content>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\fotorama.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
@@ -338,8 +378,12 @@
     <Content Include="Views\Home\NewProperty.cshtml" />
     <Content Include="Views\Home\_Search.cshtml" />
     <Content Include="Views\Reg\InsertDetails.cshtml" />
+    <Content Include="Views\UserTable\EditUser.cshtml" />
+    <Content Include="Views\UserTable\Index1.cshtml" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <Folder Include="Views\UserData\" />
+  </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />
     <Content Include="fonts\glyphicons-halflings-regular.ttf" />
@@ -347,6 +391,9 @@
     <Content Include="packages.config" />
     <None Include="Project_Readme.html" />
     <Content Include="Scripts\jquery-1.10.2.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
