@@ -210,6 +210,7 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdMasterController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\RegController.cs" />
@@ -220,6 +221,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountViewModels.cs" />
+    <Compile Include="Models\AdMaster.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdMaster.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdMaster.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdMaster.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\AdMaster.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>AdMaster.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ad_master.cs">
+      <DependentUpon>AdMaster.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\AspNetUser.cs">
       <DependentUpon>usertable.tt</DependentUpon>
     </Compile>
@@ -303,6 +322,16 @@
     <Content Include="Images\Ad3_8.jpg" />
     <Content Include="Images\Ad3_9.jpg" />
     <Content Include="Images\ReMax.png" />
+    <Content Include="Models\AdMaster.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdMaster.edmx</DependentUpon>
+      <LastGenOutput>AdMaster.Context.cs</LastGenOutput>
+    </Content>
+    <Content Include="Models\AdMaster.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <DependentUpon>AdMaster.edmx</DependentUpon>
+      <LastGenOutput>AdMaster.cs</LastGenOutput>
+    </Content>
     <Content Include="Models\usertable.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <DependentUpon>usertable.edmx</DependentUpon>
@@ -323,6 +352,13 @@
     </EntityDeploy>
     <Content Include="Models\usertable.edmx.diagram">
       <DependentUpon>usertable.edmx</DependentUpon>
+    </Content>
+    <EntityDeploy Include="Models\AdMaster.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>AdMaster.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\AdMaster.edmx.diagram">
+      <DependentUpon>AdMaster.edmx</DependentUpon>
     </Content>
     <None Include="Scripts\jquery-1.10.2-vsdoc.js" />
     <Content Include="Scripts\fotorama.js" />
@@ -380,6 +416,8 @@
     <Content Include="Views\Reg\InsertDetails.cshtml" />
     <Content Include="Views\UserTable\EditUser.cshtml" />
     <Content Include="Views\UserTable\Index1.cshtml" />
+    <Content Include="Views\AdMaster\EditAd.cshtml" />
+    <Content Include="Views\AdMaster\Index1.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Views\UserData\" />

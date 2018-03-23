@@ -1,0 +1,115 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="AdMasterModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="ad_master">
+          <Key>
+            <PropertyRef Name="adid" />
+          </Key>
+          <Property Name="adid" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="userid" Type="nvarchar" MaxLength="128" Nullable="false" />
+          <Property Name="category" Type="nvarchar" MaxLength="100" />
+          <Property Name="title" Type="nvarchar" MaxLength="100" />
+          <Property Name="address" Type="nvarchar(max)" />
+          <Property Name="description" Type="nvarchar(max)" />
+          <Property Name="location" Type="varchar" MaxLength="100" />
+          <Property Name="ad_type" Type="nvarchar" MaxLength="10" />
+          <Property Name="price" Type="money" />
+          <Property Name="bed" Type="int" />
+          <Property Name="bath" Type="int" />
+          <Property Name="pool" Type="int" />
+          <Property Name="kicthen" Type="int" />
+          <Property Name="office" Type="int" />
+          <Property Name="musicroom" Type="int" />
+          <Property Name="UploadDate" Type="datetime" Nullable="false" />
+          <Property Name="Features" Type="varchar(max)" />
+        </EntityType>
+        <EntityContainer Name="AdMasterModelStoreContainer">
+          <EntitySet Name="ad_master" EntityType="Self.ad_master" Schema="dbo" store:Type="Tables" />
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="AdMasterModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="ad_master">
+          <Key>
+            <PropertyRef Name="adid" />
+          </Key>
+          <Property Name="adid" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="userid" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="category" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="title" Type="String" MaxLength="100" FixedLength="false" Unicode="true" />
+          <Property Name="address" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="description" Type="String" MaxLength="Max" FixedLength="false" Unicode="true" />
+          <Property Name="location" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="ad_type" Type="String" MaxLength="10" FixedLength="false" Unicode="true" />
+          <Property Name="price" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="bed" Type="Int32" />
+          <Property Name="bath" Type="Int32" />
+          <Property Name="pool" Type="Int32" />
+          <Property Name="kicthen" Type="Int32" />
+          <Property Name="office" Type="Int32" />
+          <Property Name="musicroom" Type="Int32" />
+          <Property Name="UploadDate" Type="DateTime" Nullable="false" Precision="3" />
+          <Property Name="Features" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityContainer Name="AdMasterEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="ad_master" EntityType="Self.ad_master" />
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="AdMasterModelStoreContainer" CdmEntityContainer="AdMasterEntities">
+          <EntitySetMapping Name="ad_master">
+            <EntityTypeMapping TypeName="AdMasterModel.ad_master">
+              <MappingFragment StoreEntitySet="ad_master">
+                <ScalarProperty Name="adid" ColumnName="adid" />
+                <ScalarProperty Name="userid" ColumnName="userid" />
+                <ScalarProperty Name="category" ColumnName="category" />
+                <ScalarProperty Name="title" ColumnName="title" />
+                <ScalarProperty Name="address" ColumnName="address" />
+                <ScalarProperty Name="description" ColumnName="description" />
+                <ScalarProperty Name="location" ColumnName="location" />
+                <ScalarProperty Name="ad_type" ColumnName="ad_type" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="bed" ColumnName="bed" />
+                <ScalarProperty Name="bath" ColumnName="bath" />
+                <ScalarProperty Name="pool" ColumnName="pool" />
+                <ScalarProperty Name="kicthen" ColumnName="kicthen" />
+                <ScalarProperty Name="office" ColumnName="office" />
+                <ScalarProperty Name="musicroom" ColumnName="musicroom" />
+                <ScalarProperty Name="UploadDate" ColumnName="UploadDate" />
+                <ScalarProperty Name="Features" ColumnName="Features" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="true" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

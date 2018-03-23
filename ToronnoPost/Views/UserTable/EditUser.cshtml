@@ -26,14 +26,14 @@
 
                 <td>
 
-                    @Html.TextBox("employees[" + @i + "].ID",
+                    @Html.TextBox("aspnetuser[" + @i + "].ID",
                          Model[i].Id, new { @readonly = "readonly" })
 
                 </td>
 
                 <td>
 
-                    @Html.TextBox("employees[" + @i + "].Email",
+                    @Html.TextBox("aspnetuser[" + @i + "].Email",
 
                          Model[i].Email, new { @readonly = "readonly" })
 
@@ -41,7 +41,7 @@
 
                 <td>
 
-                    @Html.TextBox("employees[" + @i + "].PhoneNumber",
+                    @Html.TextBox("aspnetuser[" + @i + "].PhoneNumber",
 
                          Model[i].PhoneNumber, new { @readonly = "readonly" })
 
@@ -49,7 +49,7 @@
 
                 <td>
 
-                    @Html.TextBox("employees[" + @i + "].UserName",
+                    @Html.TextBox("aspnetuser[" + @i + "].UserName",
 
                          Model[i].UserName, new { @readonly = "readonly" })
 

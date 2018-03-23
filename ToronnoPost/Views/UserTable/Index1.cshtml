@@ -1,13 +1,8 @@
 ﻿@model List<WebShop.Models.AspNetUser>
 
 @{
-
-    ViewBag.Title = "Index";
-
+    ViewBag.Title = "Index1";
 }
-
-
-
 <h2>User Details List</h2>
 
 
@@ -18,7 +13,7 @@
 
 <table class="table">
     <tr>
-        
+
         <td>
             Unique ID:
         </td>
@@ -31,46 +26,57 @@
         <td>
             Phone No:
         </td>
+        <td>
+            User Name:
+        </td>
     </tr>
     @for (int i = 0; i < Model.Count; i++)
 
     {
-
     <tr>
+        @*<td>*@
+        @*@Html.Hidden("aspnetuser.Index1", (@i + 10))
+
+        @Html.TextBox("aspnetuser[" + (@i + 10) + "].Id", model => Model[i].Id, new { @readonly = "readonly" })*@
+
+
+
+
+        @Html.HiddenFor(model => model[i].Id)
+        <td> @Html.EditorFor(model => model[i].Id, new { @readonly = "readonly" })</td>
+        <td>@Html.EditorFor(model => model[i].Email)</td>
+        <td>@Html.EditorFor(model => model[i].PasswordHash, new { @readonly = "readonly" })</td>
+        <td>@Html.EditorFor(model => model[i].PhoneNumber)</td>
+        <td>@Html.EditorFor(model => model[i].UserName)</td>
+
+
+
+
+        @*</td>
 
         <td>
 
-            @Html.Hidden("employees.Index", (@i + 10))
+            @Html.TextBox("aspnetuser[" + (@i + 10) + "].Email",
 
-            @Html.TextBox("employees[" + (@i + 10) + "].ID",
-
-             Model[i].Id, new { @readonly = "readonly" })
+             model => Model[i].Email)
 
         </td>
 
         <td>
 
-            @Html.TextBox("employees[" + (@i + 10) + "].Name",
+            @Html.TextBox("aspnetuser[" + (@i + 10) + "].PasswordHash",
 
-             Model[i].Email)
-
-        </td>
-
-        <td>
-
-            @Html.TextBox("employees[" + (@i + 10) + "].Gender",
-
-             Model[i].PasswordHash)
+              Model[i].PasswordHash)
 
         </td>
 
         <td>
 
-            @Html.TextBox("employees[" + (@i + 10) + "].Company",
+            @Html.TextBox("aspnetuser[" + (@i + 10) + "].PhoneNumber",
 
-             Model[i].PhoneNumber)
+              Model[i].PhoneNumber)
 
-        </td>
+        </td>*@
     </tr>
     }
     <tr>

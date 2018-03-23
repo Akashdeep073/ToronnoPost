@@ -1,0 +1,59 @@
+﻿@model List<WebShop.Models.ad_master>
+@{
+    ViewBag.Title = "Index1";
+}
+
+<h2>Index1</h2>
+@using (Html.BeginForm("Index1", "AdMaster", FormMethod.Post))
+
+{
+
+    <table class="table">
+        <tr>
+            <td>
+                Ad Title:
+            </td>
+            <td>
+                Address:
+            </td>
+            <td>
+                Type:
+            </td>          
+            <td>
+                Description:
+            </td>            
+            <td>
+                Location:
+            </td>
+            <td>
+                Price:
+            </td>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+
+        {
+            <tr>
+
+                @Html.HiddenFor(model => model[i].adid)                
+                <td>@Html.EditorFor(model => model[i].title)</td>
+                <td>@Html.EditorFor(model => model[i].address)</td>
+                <td>@Html.EditorFor(model => model[i].ad_type)</td>
+                <td>@Html.EditorFor(model => model[i].description)</td>
+                <td>@Html.EditorFor(model => model[i].location)</td>
+                <td>@Html.EditorFor(model => model[i].price)</td>
+
+            </tr>
+        }
+        <tr>
+
+            <td colspan="4">
+
+                <input type="submit" value="Submit" />
+
+            </td>
+
+        </tr>
+
+    </table>
+
+}

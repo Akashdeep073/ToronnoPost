@@ -7,7 +7,9 @@
 
 <ul class="nav navbar-nav navbar-right">
     @if (User.Identity.GetUserName() == "Admin@tp.ca")
-    {<li>@Html.ActionLink("User Details", "index1", "usertable")</li>}
+    {
+        <li>@Html.ActionLink("Ads", "index1", "AdMaster")</li>
+        <li>@Html.ActionLink("Users", "index1", "usertable")</li>}
     <li>@Html.ActionLink("Post Ad", "InsertDetails", "Reg")</li>
     <li>
         @Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })

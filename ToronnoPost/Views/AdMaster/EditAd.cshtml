@@ -1,0 +1,129 @@
+﻿@model List<WebShop.Models.ad_master>
+@{
+    ViewBag.Title = "EditAd";
+}
+
+<h2>EditAd</h2>
+
+@using (Html.BeginForm("Index1", "AdMaster", FormMethod.Post))
+
+{
+
+    <table class="table">
+        <tr>
+
+            <td>
+                Ad ID:
+            </td>
+            <td>
+                User ID:
+            </td>
+            <td>
+                Password:
+            </td>
+            <td>
+                Ad Title:
+            </td>
+            <td>
+                User Name:
+            </td>
+
+            <td>
+                Added On:
+            </td>
+            <td>
+                Address:
+            </td>
+            <td>
+                Type:
+            </td>
+            <td>
+                No of Bath:
+            </td>
+            <td>
+                No of Bed:
+            </td>
+
+
+            <td>
+                Category:
+            </td>
+            <td>
+                Description:
+            </td>
+            <td>
+                Features:
+            </td>
+            <td>
+                No of Kicthen:
+            </td>
+            <td>
+                Location:
+            </td>
+
+
+            <td>
+                No of Music Room:
+            </td>
+            <td>
+                No of Office:
+            </td>
+            <td>
+                No of Pool:
+            </td>
+            <td>
+                Price:
+            </td>
+        </tr>
+        @for (int i = 0; i < Model.Count; i++)
+
+        {
+            <tr>
+
+                @Html.HiddenFor(model => model[i].adid)
+                <td> @Html.EditorFor(model => model[i].adid, new { @readonly = "readonly" })</td>
+                <td>@Html.EditorFor(model => model[i].userid)</td>
+                <td>@Html.EditorFor(model => model[i].title)</td>
+                <td>@Html.EditorFor(model => model[i].UploadDate, new { @readonly = "readonly" })</td>
+                <td>@Html.EditorFor(model => model[i].address)</td>
+                <td>@Html.EditorFor(model => model[i].ad_type)</td>
+
+                <td>@Html.EditorFor(model => model[i].bath)</td>
+                <td>@Html.EditorFor(model => model[i].bed)</td>
+
+                <td>@Html.EditorFor(model => model[i].category)</td>
+                <td>@Html.EditorFor(model => model[i].description)</td>
+
+                <td>@Html.EditorFor(model => model[i].Features)</td>
+                <td>@Html.EditorFor(model => model[i].kicthen)</td>
+
+                <td>@Html.EditorFor(model => model[i].location)</td>
+                <td>@Html.EditorFor(model => model[i].musicroom)</td>
+
+                <td>@Html.EditorFor(model => model[i].office)</td>
+                <td>@Html.EditorFor(model => model[i].pool)</td>
+
+                <td>@Html.EditorFor(model => model[i].price)</td>
+
+            </tr>
+        }
+        <tr>
+
+            <td colspan="4">
+
+                <input type="submit" value="Submit" />
+                <p style="color:green; font-size:12px;">
+                    @ViewBag.Message
+                </p>
+
+            </td>
+
+        </tr>
+
+    </table>
+
+}
+
+@section Scripts{
+    @Scripts.Render("~/bundles/jqueryval")
+}
